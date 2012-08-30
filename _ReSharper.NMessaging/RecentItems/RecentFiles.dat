@@ -1,0 +1,44 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/f:IBusMessageVersion.cs" caret="41" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:CommandDeliveryAcknowledge.cs" caret="158" fromTop="5" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:CommandVersionStub.cs" caret="0" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:ICommand.cs" caret="0" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:ICommandVersion.cs" caret="0" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Event/f:IBusEvent.cs" caret="0" fromTop="0" />
+    <File id="7768A935-0740-476E-B801-E127413E9950/f:IQueueMessage.cs" caret="0" fromTop="0" />
+    <File id="7768A935-0740-476E-B801-E127413E9950/f:IQueueRepository.cs" caret="0" fromTop="0" />
+    <File id="7768A935-0740-476E-B801-E127413E9950/f:IWorkerGateway.cs" caret="0" fromTop="0" />
+    <File id="7768A935-0740-476E-B801-E127413E9950/d:Endpoint/f:IMessageValidatorGateway.cs" caret="0" fromTop="0" />
+    <File id="DA08A1CE-7776-45B2-AA4D-559D9C1801E6/f:WorkerGateway.cs" caret="721" fromTop="27" />
+    <File id="A30C4123-76F1-4F15-A9B5-801D85FB24B2/f:MessageValidatorGateway.cs" caret="373" fromTop="14" />
+    <File id="7768A935-0740-476E-B801-E127413E9950/f:QueueMessage.cs" caret="0" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/f:IBusEnvelopeSettings.cs" caret="512" fromTop="17" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/f:Bus.cs" caret="0" fromTop="0" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/d:Receiver/f:ServerSocketHandler.cs" caret="163" fromTop="8" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/f:Entry.cs" caret="419" fromTop="18" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/f:QueueMessage.cs" caret="0" fromTop="0" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:ICommand.cs" caret="88" fromTop="4" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:CommandVersionStub.cs" caret="674" fromTop="19" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Event/f:IBusEvent.cs" caret="120" fromTop="5" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Event/f:IBusEvent.cs" caret="0" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:ICommandVersion.cs" caret="54" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:ICommand.cs" caret="54" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:CommandDeliveryAcknowledge.cs" caret="54" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/d:Command/f:CommandVersionStub.cs" caret="71" fromTop="2" />
+    <File id="DA08A1CE-7776-45B2-AA4D-559D9C1801E6/f:WorkerGateway.cs" caret="135" fromTop="4" />
+    <File id="DA08A1CE-7776-45B2-AA4D-559D9C1801E6/f:WorkerGateway.cs" caret="0" fromTop="0" />
+    <File id="A30C4123-76F1-4F15-A9B5-801D85FB24B2/f:MessageValidatorGateway.cs" caret="165" fromTop="5" />
+    <File id="A30C4123-76F1-4F15-A9B5-801D85FB24B2/f:MessageValidatorGateway.cs" caret="373" fromTop="14" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/f:QueueMessage.cs" caret="45" fromTop="1" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/f:QueueMessage.cs" caret="150" fromTop="6" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/d:Receiver/f:ServerSocketHandler.cs" caret="104" fromTop="4" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/f:Bus.cs" caret="407" fromTop="14" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/f:IBusEnvelopeSettings.cs" caret="349" fromTop="12" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/d:Message/f:IBusEnvelopeSettings.cs" caret="13" fromTop="0" />
+    <File id="31092419-BE11-4BEA-93A8-DD1EEF5E82A8/f:Bus.cs" caret="0" fromTop="0" />
+    <File id="B78C895A-9E0E-42A8-AFCD-6244539EADE9/f:Entry.cs" caret="419" fromTop="18" />
+  </RecentEdits>
+</RecentFiles>
