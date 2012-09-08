@@ -1,7 +1,4 @@
 <Modules>
-  <Module PersistentId="B78C895A-9E0E-42A8-AFCD-6244539EADE9" ModuleId="Service" />
-  <Module PersistentId="DA08A1CE-7776-45B2-AA4D-559D9C1801E6" ModuleId="Worker" />
-  <Module PersistentId="31092419-BE11-4BEA-93A8-DD1EEF5E82A8" ModuleId="Contracts" />
-  <Module PersistentId="A30C4123-76F1-4F15-A9B5-801D85FB24B2" ModuleId="MessageValidator" />
-  <Module PersistentId="7768A935-0740-476E-B801-E127413E9950" ModuleId="BusContractsInternals" />
+  <Module PersistentId="350A9ACE-46BA-4EBA-8335-EF5634725B53" ModuleId="NMessaging.Transport" />
+  <Module PersistentId="1EE3B86C-1452-4009-BB24-BE28F22F5F01" ModuleId="NMessaging" />
 </Modules>
