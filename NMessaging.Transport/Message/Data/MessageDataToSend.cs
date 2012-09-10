@@ -1,9 +1,13 @@
 ﻿using System;
+using NMessaging.Transport.Message.Data.Report;
 
 namespace NMessaging.Transport.Message.Data
 {
     public class MessageDataToSend : AMessageData
     {
+        public delegate void OnMessageSentDelegate(MessageDataSentReportSuccess pMessageSentReportSuccess);
+        public delegate void OnMessageNotSentDelegate(MessageDataSentReportFail pMessageSentReportFail);
+
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
@@ -21,6 +25,14 @@ namespace NMessaging.Transport.Message.Data
         {
             get { return MessageDataType.ToSend; }
         }
+
+        //////////////////////////////
+
+        private event OnMessageSentDelegate OnMessageSent;
+
+        //////////////////////////////
+
+        private event OnMessageNotSentDelegate OnMessageNotSent;
 
         //////////////////////////////
     }

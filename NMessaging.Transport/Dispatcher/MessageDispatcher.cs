@@ -1,5 +1,5 @@
-﻿using NMessaging.Transport.Message.Data;
-using NMessaging.Transport.Message.Data.Report;
+﻿using System.Collections.Concurrent;
+using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher
 {
@@ -9,6 +9,7 @@ namespace NMessaging.Transport.Dispatcher
         //          MEMBERS         //
         //////////////////////////////
 
+        private static ConcurrentQueue<MessageToSendOnQueue> MessagesToSendOnQueue = default(ConcurrentQueue<MessageToSendOnQueue>);
         private MessageDispatcherSettings _oMessageDispatcherSettings = default(MessageDispatcherSettings);
 
 
@@ -26,16 +27,9 @@ namespace NMessaging.Transport.Dispatcher
         //          METHODS         //
         //////////////////////////////
 
-        public MessageDataSentReportFail Send(MessageDataToSend pMessageToSend, MessageDataToSendSettings pMessageDataToSendSettings)
+        public void Send(MessageDataToSend pMessageToSend, MessageDataToSendSettings pMessageDataToSendSettings)
         {
-            return null;
-        }
-
-        //////////////////////////////
-
-        public void SendAsync(MessageDataToSend pMessageToSend)
-        {
-
+            MessagesToSendOnQueue.Enqueue(new MessageToSendOnQueue(pMessageToSend, pMessageDataToSendSettings));
         }
 
         //////////////////////////////
