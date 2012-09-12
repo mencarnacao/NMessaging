@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dispatcher\MessageDispatcherWorker.cs" />
     <Compile Include="Dispatcher\MessageToSendOnQueue.cs" />
     <Compile Include="Dispatcher\MessageDispatcherSettings.cs" />
     <Compile Include="Dispatcher\MessageDispatcher.cs" />
