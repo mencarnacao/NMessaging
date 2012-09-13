@@ -4,3 +4,6 @@ obj
 
 # mstest test results
 TestResults
+NMessaging.suo
+_ReSharper.NMessaging/BuildScriptCache/.crc
+_ReSharper.NMessaging/NamedArguments/1/5c1200fa.dat
