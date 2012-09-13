@@ -28,11 +28,11 @@ namespace NMessaging.Transport.Message.Data
 
         //////////////////////////////
 
-        private event OnMessageSentDelegate OnMessageSent;
+        public event OnMessageSentDelegate OnMessageSent;
 
         //////////////////////////////
 
-        private event OnMessageNotSentDelegate OnMessageNotSent;
+        public event OnMessageNotSentDelegate OnMessageNotSent;
 
         //////////////////////////////
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Threading;
+using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher
 {
@@ -10,19 +11,20 @@ namespace NMessaging.Transport.Dispatcher
         //          MEMBERS         //
         //////////////////////////////
 
-        private readonly ConcurrentQueue<MessageToSendOnQueue> _oMessagesToSendOnQueue = default(ConcurrentQueue<MessageToSendOnQueue>);
         private MessageDispatcher _oMessageDispatcher = default(MessageDispatcher);
+        private MessageToSendOnQueue _oMessageToProcess = default(MessageToSendOnQueue);
         private readonly AutoResetEvent _oAutoResetEvent = new AutoResetEvent(true);
+        private MessageNotSentDelegate _oMessageNotSentDelegate = default(MessageNotSentDelegate);
 
 
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageDispatcherWorker(MessageDispatcher pMessageDispatcher, ConcurrentQueue<MessageToSendOnQueue> pMessageToSendOnQueues)
+        public MessageDispatcherWorker(MessageDispatcher pMessageDispatcher, MessageNotSentDelegate pMessageNotSentDelegate)
         {
             _oMessageDispatcher = pMessageDispatcher;
-            _oMessagesToSendOnQueue = pMessageToSendOnQueues;
+            _oMessageNotSentDelegate = pMessageNotSentDelegate;
         }
 
 
@@ -34,43 +36,33 @@ namespace NMessaging.Transport.Dispatcher
         {
             while (true)
             {
+                _oAutoResetEvent.WaitOne();
+
                 try
                 {
-                    MessageToSendOnQueue oMessageToSendOnQueue = null;
 
-                    while (true)
-                    {
-                        _oMessagesToSendOnQueue.TryDequeue(out oMessageToSendOnQueue);
 
-                        if (oMessageToSendOnQueue != null)
-                        {
-                            break;
-                        }
 
-                        _oAutoResetEvent.WaitOne();
-                    }
 
-                    this.SendMessage(oMessageToSendOnQueue);
+
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
-                    //Restart the thread?
+                    _oMessageNotSentDelegate(
+                        new MessageDataNotSentError(MessageDataNotSentErrorType.NotExpectedException, DateTime.Now, _oMessageToProcess, exception));
                 }
+
+                _oMessageToProcess = default(MessageToSendOnQueue);
             }
         }
 
         //////////////////////////////
 
-        public void NotifyOfNewMessageOnQueue()
+        public void Process(MessageToSendOnQueue pMessageToSendOnQueue)
         {
+            _oMessageToProcess = pMessageToSendOnQueue;
+
             _oAutoResetEvent.Set();
-        }
-
-        //////////////////////////////
-
-        private void SendMessage(MessageToSendOnQueue pMessageToSendOnQueue)
-        {
-
         }
 
         //////////////////////////////

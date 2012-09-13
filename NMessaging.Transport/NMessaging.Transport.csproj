@@ -40,12 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dispatcher\MessageToSendOnErrorQueue.cs" />
     <Compile Include="Dispatcher\MessageDispatcherWorker.cs" />
     <Compile Include="Dispatcher\MessageToSendOnQueue.cs" />
     <Compile Include="Dispatcher\MessageDispatcherSettings.cs" />
     <Compile Include="Dispatcher\MessageDispatcher.cs" />
     <Compile Include="Dispatcher\ServerSocketHandler.cs" />
-    <Compile Include="Message\Data\MessageDataToSendOnTry.cs" />
+    <Compile Include="Dispatcher\MessageDataToSendOnTry.cs" />
     <Compile Include="Message\Data\AMessageData.cs" />
     <Compile Include="Message\Data\MessageDataNotSentError.cs" />
     <Compile Include="Message\Data\MessageDataReceived.cs" />

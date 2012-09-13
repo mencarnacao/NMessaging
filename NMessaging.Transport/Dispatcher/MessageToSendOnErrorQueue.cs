@@ -2,25 +2,21 @@
 
 namespace NMessaging.Transport.Dispatcher
 {
-    public class MessageToSendOnQueue
+    public class MessageToSendOnErrorQueue : MessageToSendOnQueue
     {
         //////////////////////////////
         //          MEMBERS         //
         //////////////////////////////
 
-        protected readonly MessageDataToSendSettings _oMessageDataToSendSettings = default(MessageDataToSendSettings);
-        protected readonly MessageDataToSend _oMessageDataToSend = default(MessageDataToSend);
+
 
 
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageToSendOnQueue(MessageDataToSend pMessageDataToSend, MessageDataToSendSettings pMessageDataToSendSettings)
-        {
-            _oMessageDataToSend = pMessageDataToSend;
-            _oMessageDataToSendSettings = pMessageDataToSendSettings;
-        }
+        public MessageToSendOnErrorQueue(MessageDataToSend pMessageDataToSend, MessageDataToSendSettings pMessageDataToSendSettings):base(pMessageDataToSend, pMessageDataToSendSettings)
+        { }
 
 
         //////////////////////////////
