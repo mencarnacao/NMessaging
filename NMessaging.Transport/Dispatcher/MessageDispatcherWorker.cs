@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Threading;
+using NMessaging.Transport.Dispatcher.Queue;
 using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher
@@ -14,7 +15,7 @@ namespace NMessaging.Transport.Dispatcher
         private MessageDispatcher _oMessageDispatcher = default(MessageDispatcher);
         private MessageToSendOnQueue _oMessageToProcess = default(MessageToSendOnQueue);
         private readonly AutoResetEvent _oAutoResetEvent = new AutoResetEvent(true);
-        private MessageNotSentDelegate _oMessageNotSentDelegate = default(MessageNotSentDelegate);
+        private readonly MessageNotSentDelegate _oMessageNotSentDelegate = default(MessageNotSentDelegate);
 
 
         //////////////////////////////
@@ -38,22 +39,53 @@ namespace NMessaging.Transport.Dispatcher
             {
                 _oAutoResetEvent.WaitOne();
 
-                try
+                if (_oMessageToProcess != null)
                 {
+                    try
+                    {
+                        if (this.ValidateMessage())
+                        {
+                            if (this.SerializeMessage())
+                            {
+
+                            }
+                        }
 
 
 
-
-
-                }
-                catch (Exception exception)
-                {
-                    _oMessageNotSentDelegate(
-                        new MessageDataNotSentError(MessageDataNotSentErrorType.NotExpectedException, DateTime.Now, _oMessageToProcess, exception));
+                    }
+                    catch (Exception exception)
+                    {
+                        _oMessageNotSentDelegate(
+                            new MessageDataNotSentError(MessageDataNotSentErrorType.NotExpectedException, DateTime.Now,
+                                                        _oMessageToProcess.MessageDataToSend, exception));
+                    }
                 }
 
                 _oMessageToProcess = default(MessageToSendOnQueue);
             }
+        }
+
+        //////////////////////////////
+
+        private bool ValidateMessage()
+        {
+            bool bValid = true;
+
+
+
+            return bValid;
+        }
+
+        //////////////////////////////
+
+        private bool SerializeMessage()
+        {
+            bool bValid = true;
+
+
+
+            return bValid;
         }
 
         //////////////////////////////

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Message.Data
+namespace NMessaging.Transport.Dispatcher.Queue.OnError
 {
     public class MessageDataNotSentError
     {
@@ -10,7 +10,6 @@ namespace NMessaging.Transport.Message.Data
 
         private MessageDataNotSentErrorType _messageNotSentErrorType = default(MessageDataNotSentErrorType);
         private DateTime _oDateOperation = default(DateTime);
-        private MessageDataToSend _oMessageDataToSend = default(MessageDataToSend);
         private Exception _oException = default(Exception);
 
 
@@ -23,20 +22,18 @@ namespace NMessaging.Transport.Message.Data
 
         //////////////////////////////
 
-        public MessageDataNotSentError(MessageDataNotSentErrorType pMessageNotSentErrorType, DateTime pDateOperation, MessageDataToSend pMessageDataToSend)
+        public MessageDataNotSentError(MessageDataNotSentErrorType pMessageNotSentErrorType, DateTime pDateOperation)
         {
             _messageNotSentErrorType = pMessageNotSentErrorType;
             _oDateOperation = pDateOperation;
-            _oMessageDataToSend = pMessageDataToSend;
         }
 
         //////////////////////////////
 
-        public MessageDataNotSentError(MessageDataNotSentErrorType pMessageNotSentErrorType, DateTime pDateOperation, MessageDataToSend pMessageDataToSend, Exception pException)
+        public MessageDataNotSentError(MessageDataNotSentErrorType pMessageNotSentErrorType, DateTime pDateOperation, Exception pException)
         {
             _messageNotSentErrorType = pMessageNotSentErrorType;
             _oDateOperation = pDateOperation;
-            _oMessageDataToSend = pMessageDataToSend;
             _oException = pException;
         }
 
@@ -45,7 +42,7 @@ namespace NMessaging.Transport.Message.Data
         //         PROPERTIES       //
         //////////////////////////////
 
-        private MessageDataNotSentErrorType MessageNotSentErrorType
+        public MessageDataNotSentErrorType MessageNotSentErrorType
         {
             get { return _messageNotSentErrorType; }
 
@@ -54,7 +51,7 @@ namespace NMessaging.Transport.Message.Data
 
         //////////////////////////////
 
-        private DateTime DateOperation
+        public DateTime DateOperation
         {
             get { return _oDateOperation; }
 
@@ -63,16 +60,7 @@ namespace NMessaging.Transport.Message.Data
 
         //////////////////////////////
 
-        private MessageDataToSend MessageDataToSend
-        {
-            get { return _oMessageDataToSend; }
-
-            set { _oMessageDataToSend = value; }
-        }
-
-        //////////////////////////////
-
-        private Exception Exception
+        public Exception Exception
         {
             get { return _oException; }
 
