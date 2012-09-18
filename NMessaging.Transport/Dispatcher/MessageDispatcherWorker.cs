@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Threading;
 using NMessaging.Transport.Dispatcher.Queue;
+using NMessaging.Transport.Dispatcher.Queue.OnError;
 using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher
@@ -56,9 +57,10 @@ namespace NMessaging.Transport.Dispatcher
                     }
                     catch (Exception exception)
                     {
-                        _oMessageNotSentDelegate(
-                            new MessageDataNotSentError(MessageDataNotSentErrorType.NotExpectedException, DateTime.Now,
-                                                        _oMessageToProcess.MessageDataToSend, exception));
+                        _oMessageNotSentDelegate(_oMessageToProcess,
+                                                 new MessageDataNotSentError(
+                                                     MessageDataNotSentErrorType.NotExpectedException, DateTime.Now,
+                                                     exception));
                     }
                 }
 
@@ -72,7 +74,7 @@ namespace NMessaging.Transport.Dispatcher
         {
             bool bValid = true;
 
-
+            _oMessageNotSentDelegate(_oMessageToProcess, new MessageDataNotSentError(MessageDataNotSentErrorType.ParseException, DateTime.Now));
 
             return bValid;
         }
@@ -83,7 +85,7 @@ namespace NMessaging.Transport.Dispatcher
         {
             bool bValid = true;
 
-
+            _oMessageNotSentDelegate(_oMessageToProcess, new MessageDataNotSentError(MessageDataNotSentErrorType.SerializationError, DateTime.Now));
 
             return bValid;
         }
@@ -93,6 +95,8 @@ namespace NMessaging.Transport.Dispatcher
         public void Process(MessageToSendOnQueue pMessageToSendOnQueue)
         {
             _oMessageToProcess = pMessageToSendOnQueue;
+
+            _oMessageNotSentDelegate(_oMessageToProcess, new MessageDataNotSentError(MessageDataNotSentErrorType.DestinationNotAvailable, DateTime.Now));
 
             _oAutoResetEvent.Set();
         }
