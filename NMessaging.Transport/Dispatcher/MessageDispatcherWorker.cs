@@ -17,16 +17,21 @@ namespace NMessaging.Transport.Dispatcher
         private MessageToSendOnQueue _oMessageToProcess = default(MessageToSendOnQueue);
         private readonly AutoResetEvent _oAutoResetEvent = new AutoResetEvent(true);
         private readonly MessageNotSentDelegate _oMessageNotSentDelegate = default(MessageNotSentDelegate);
+        private readonly MessageSentDelegate _oMessageSentDelegate = default(MessageSentDelegate);
+        private readonly MessageDispatcherWorkerIsFreeDelegate _oMessageDispatcherWorkerIsFreeDelegate = default(MessageDispatcherWorkerIsFreeDelegate);
+        private bool _bDoWork = true;
 
 
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageDispatcherWorker(MessageDispatcher pMessageDispatcher, MessageNotSentDelegate pMessageNotSentDelegate)
+        public MessageDispatcherWorker(MessageDispatcher pMessageDispatcher, MessageNotSentDelegate pMessageNotSentDelegate, MessageSentDelegate pMessageSentDelegate, MessageDispatcherWorkerIsFreeDelegate pMessageDispatcherWorkerIsFreeDelegate)
         {
             _oMessageDispatcher = pMessageDispatcher;
             _oMessageNotSentDelegate = pMessageNotSentDelegate;
+            _oMessageSentDelegate = pMessageSentDelegate;
+            _oMessageDispatcherWorkerIsFreeDelegate = pMessageDispatcherWorkerIsFreeDelegate;
         }
 
 
@@ -36,7 +41,7 @@ namespace NMessaging.Transport.Dispatcher
 
         private void DoWork()
         {
-            while (true)
+            while (_bDoWork)
             {
                 _oAutoResetEvent.WaitOne();
 
@@ -48,12 +53,9 @@ namespace NMessaging.Transport.Dispatcher
                         {
                             if (this.SerializeMessage())
                             {
-
+                                this.SendMessage();
                             }
                         }
-
-
-
                     }
                     catch (Exception exception)
                     {
@@ -99,6 +101,20 @@ namespace NMessaging.Transport.Dispatcher
             _oMessageNotSentDelegate(_oMessageToProcess, new MessageDataNotSentError(MessageDataNotSentErrorType.DestinationNotAvailable, DateTime.Now));
 
             _oAutoResetEvent.Set();
+        }
+
+        //////////////////////////////
+
+        private void SendMessage()
+        {
+            _oMessageSentDelegate(_oMessageToProcess);
+        }
+
+        //////////////////////////////
+
+        public void StopWorker()
+        {
+            _bDoWork = false;
         }
 
         //////////////////////////////

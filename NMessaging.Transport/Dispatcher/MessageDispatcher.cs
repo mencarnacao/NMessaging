@@ -11,6 +11,8 @@ using NMessaging.Transport.Message.Data;
 namespace NMessaging.Transport.Dispatcher
 {
     public delegate void MessageNotSentDelegate(MessageToSendOnQueue pMessageToSendOnQueue, MessageDataNotSentError pMessageDataNotSentError);
+    public delegate void MessageSentDelegate(MessageToSendOnQueue pMessageToSendOnQueue);
+    public delegate void MessageDispatcherWorkerIsFreeDelegate(MessageDispatcherWorker pMessageDispatcherWorker);
 
     public class MessageDispatcher
     {
@@ -19,13 +21,14 @@ namespace NMessaging.Transport.Dispatcher
         //////////////////////////////
 
         private MessageDispatcherSettings _oMessageDispatcherSettings = default(MessageDispatcherSettings);
-        private readonly Lazy<Queue<MessageDispatcherWorker>> _oWorkers = new Lazy<Queue<MessageDispatcherWorker>>();
-        private readonly Lazy<Queue<MessageDispatcherWorker>> _oWorkerErrorMessages = new Lazy<Queue<MessageDispatcherWorker>>();
+        private readonly Lazy<Queue<MessageDispatcherWorker>> _oWorkersQueue = new Lazy<Queue<MessageDispatcherWorker>>();
+        private readonly Lazy<List<MessageDispatcherWorker>> _oWorkersInUseQueue = new Lazy<List<MessageDispatcherWorker>>();
         private readonly Lazy<Queue<MessageToSendOnQueue>> _oMessagesQueue = new Lazy<Queue<MessageToSendOnQueue>>();
         private readonly Lazy<Queue<MessageToSendOnQueueError>> _oMessagesQueueFailedMessages = new Lazy<Queue<MessageToSendOnQueueError>>();
         private Thread _oWorkDistributerThread = default(Thread);
         private readonly AutoResetEvent _oAutoResetEvent = new AutoResetEvent(true);
-        
+        private bool _bDoWork = true;
+
 
         //////////////////////////////
         //        CONSTRUCTORS      //
@@ -35,9 +38,9 @@ namespace NMessaging.Transport.Dispatcher
         {
             _oMessageDispatcherSettings = pMessageDispatcherSettings;
 
-            for (var iCoreNumber = 0; iCoreNumber < Environment.ProcessorCount; iCoreNumber++)
+            for (var iCoreNumber = 0; iCoreNumber < (Environment.ProcessorCount * 2); iCoreNumber++)
             {
-                _oWorkers.Value.Enqueue(new MessageDispatcherWorker(this, this.MessageWasNotSent));
+                _oWorkersQueue.Value.Enqueue(new MessageDispatcherWorker(this, this.MessageWasNotSent, this.MessageWasSent, WorkerIsFree));
             }
         }
 
@@ -55,17 +58,35 @@ namespace NMessaging.Transport.Dispatcher
 
         public void Send(MessageDataToSend pMessageToSend, MessageDataToSendSettings pMessageDataToSendSettings)
         {
-            _oMessagesQueue.Value.Enqueue(new MessageToSendOnQueue(pMessageToSend, pMessageDataToSendSettings));
+            if (_bDoWork)
+            {
+                _oMessagesQueue.Value.Enqueue(new MessageToSendOnQueue(pMessageToSend, pMessageDataToSendSettings));
+            }
         }
 
         //////////////////////////////
 
         private void DoDistributionWork()
         {
-            while (true)
+            while (_bDoWork)
             {
-                _oWorkers.Value.Dequeue().Process(_oMessagesQueue.Value.Dequeue());
+                var oMessageDispatcherWorker = _oWorkersQueue.Value.Dequeue();
+
+                _oWorkersInUseQueue.Value.Add(oMessageDispatcherWorker);
+
+                oMessageDispatcherWorker.Process(_oMessagesQueue.Value.Dequeue());
             }
+        }
+
+        //////////////////////////////
+
+        private void MessageWasSent(MessageToSendOnQueue pMessageToSendOnQueue)
+        {
+            //var messageToSendOnQueueError = new MessageToSendOnQueueError(pMessageToSendOnQueue.MessageDataToSend, pMessageToSendOnQueue.MessageDataToSendSettings);
+
+            //messageToSendOnQueueError.MessageDataSentFailures.Add(pMessageDataNotSentError);
+
+            //_oMessagesQueueFailedMessages.Value.Enqueue(messageToSendOnQueueError);
         }
 
         //////////////////////////////
@@ -77,6 +98,24 @@ namespace NMessaging.Transport.Dispatcher
             messageToSendOnQueueError.MessageDataSentFailures.Add(pMessageDataNotSentError);
 
             _oMessagesQueueFailedMessages.Value.Enqueue(messageToSendOnQueueError);
+        }
+
+        //////////////////////////////
+
+        private void WorkerIsFree(MessageDispatcherWorker pMessageDispatcherWorker)
+        {
+            _oWorkersQueue.Value.Enqueue(pMessageDispatcherWorker);
+        }
+
+        //////////////////////////////
+
+        public void StopDispatcher()
+        {
+            _bDoWork = false;
+
+            while (_oWorkersQueue.Value.Count != (Environment.ProcessorCount*2))
+            {
+            }
         }
 
         //////////////////////////////
