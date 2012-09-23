@@ -12,3 +12,5 @@ _ReSharper.NMessaging/BuildScriptCache
 _ReSharper.NMessaging/
 NMessaging.suo
 NMessaging.suo
+NMessaging.Transport/NMessaging.Transport.csproj.user
+NMessaging.suo

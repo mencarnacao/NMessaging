@@ -1,4 +1,5 @@
-﻿using NMessaging.Transport.Message.Data;
+﻿using System;
+using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher.Queue
 {
@@ -10,6 +11,8 @@ namespace NMessaging.Transport.Dispatcher.Queue
 
         protected readonly MessageDataToSendSettings _oMessageDataToSendSettings = default(MessageDataToSendSettings);
         protected readonly MessageDataToSend _oMessageDataToSend = default(MessageDataToSend);
+        protected readonly Guid _oMessageID = default(Guid);
+        protected long _iProcessingTime = default(long);
 
 
         //////////////////////////////
@@ -20,6 +23,7 @@ namespace NMessaging.Transport.Dispatcher.Queue
         {
             _oMessageDataToSend = pMessageDataToSend;
             _oMessageDataToSendSettings = pMessageDataToSendSettings;
+            _oMessageID = Guid.NewGuid();
         }
 
 
@@ -37,6 +41,22 @@ namespace NMessaging.Transport.Dispatcher.Queue
         public MessageDataToSend MessageDataToSend
         {
             get { return _oMessageDataToSend; }
+        }
+
+        //////////////////////////////
+
+        public Guid MessageID
+        {
+            get { return _oMessageID; }
+        }
+
+        //////////////////////////////
+
+        public long ProcessingTime
+        {
+            get { return _iProcessingTime; }
+
+            set { _iProcessingTime = value; }
         }
 
         //////////////////////////////

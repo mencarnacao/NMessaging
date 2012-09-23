@@ -53,11 +53,12 @@
     <Compile Include="Message\Data\MessageDataToSend.cs" />
     <Compile Include="Message\Data\MessageDataType.cs" />
     <Compile Include="Dispatcher\Queue\OnError\MessageDataNotSentErrorType.cs" />
-    <Compile Include="Message\Data\Report\MessageDataReportType.cs" />
-    <Compile Include="Message\Data\Report\MessageDataSentReportSuccess.cs" />
-    <Compile Include="Message\Data\Report\MessageDataSentReportFail.cs" />
-    <Compile Include="Message\Data\Report\IMessageDataReport.cs" />
     <Compile Include="Message\Data\MessageDataToSendSettings.cs" />
+    <Compile Include="Message\Data\Reporting\MessageDataNotSentReport.cs" />
+    <Compile Include="Message\Data\Reporting\IMessageDataReport.cs" />
+    <Compile Include="Message\Data\Reporting\MessageDataSentReport.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Message\MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

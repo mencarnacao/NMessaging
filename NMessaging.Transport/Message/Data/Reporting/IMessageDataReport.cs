@@ -1,4 +1,6 @@
-﻿namespace NMessaging.Transport.Message.Data.Report
+﻿using System;
+
+namespace NMessaging.Transport.Message.Data.Reporting
 {
     public interface IMessageDataReport
     {
@@ -6,7 +8,7 @@
         //         PROPERTIES       //
         //////////////////////////////
 
-        MessageDataReportType MessageReportType { get; }
+        Guid MessageID { get; }
 
         //////////////////////////////
     }

@@ -82,22 +82,25 @@ namespace NMessaging.Transport.Dispatcher
 
         private void MessageWasSent(MessageToSendOnQueue pMessageToSendOnQueue)
         {
-            //var messageToSendOnQueueError = new MessageToSendOnQueueError(pMessageToSendOnQueue.MessageDataToSend, pMessageToSendOnQueue.MessageDataToSendSettings);
-
-            //messageToSendOnQueueError.MessageDataSentFailures.Add(pMessageDataNotSentError);
-
-            //_oMessagesQueueFailedMessages.Value.Enqueue(messageToSendOnQueueError);
+            pMessageToSendOnQueue.MessageDataToSend.MessageWasSent(pMessageToSendOnQueue.MessageID, pMessageToSendOnQueue.ProcessingTime);
         }
 
         //////////////////////////////
 
         private void MessageWasNotSent(MessageToSendOnQueue pMessageToSendOnQueue, MessageDataNotSentError pMessageDataNotSentError)
         {
+
+            //if message has failed more that te number of maximum tries, then message has failed
+
             var messageToSendOnQueueError = new MessageToSendOnQueueError(pMessageToSendOnQueue.MessageDataToSend, pMessageToSendOnQueue.MessageDataToSendSettings);
 
             messageToSendOnQueueError.MessageDataSentFailures.Add(pMessageDataNotSentError);
 
             _oMessagesQueueFailedMessages.Value.Enqueue(messageToSendOnQueueError);
+
+            ////
+            
+
         }
 
         //////////////////////////////

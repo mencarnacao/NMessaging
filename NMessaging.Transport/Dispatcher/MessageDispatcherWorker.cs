@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Threading;
 using NMessaging.Transport.Dispatcher.Queue;
 using NMessaging.Transport.Dispatcher.Queue.OnError;
@@ -45,6 +46,10 @@ namespace NMessaging.Transport.Dispatcher
             {
                 _oAutoResetEvent.WaitOne();
 
+                var oStopwatch = new Stopwatch();
+
+                oStopwatch.Start();
+
                 if (_oMessageToProcess != null)
                 {
                     try
@@ -54,6 +59,12 @@ namespace NMessaging.Transport.Dispatcher
                             if (this.SerializeMessage())
                             {
                                 this.SendMessage();
+
+                                oStopwatch.Stop();
+
+                                _oMessageToProcess.ProcessingTime = oStopwatch.ElapsedMilliseconds;
+
+                                _oMessageSentDelegate(_oMessageToProcess);
                             }
                         }
                     }
@@ -107,7 +118,7 @@ namespace NMessaging.Transport.Dispatcher
 
         private void SendMessage()
         {
-            _oMessageSentDelegate(_oMessageToProcess);
+            
         }
 
         //////////////////////////////

@@ -1,13 +1,13 @@
 ﻿using System;
-using NMessaging.Transport.Message.Data.Report;
+using NMessaging.Transport.Message.Data.Reporting;
 
 namespace NMessaging.Transport.Message.Data
 {
+    public delegate void OnMessageSentDelegate(MessageDataSentReport pMessageDataSentReport);
+    public delegate void OnMessageNotSentDelegate(MessageDataNotSentReport pMessageDataNotSentReport);
+
     public class MessageDataToSend : AMessageData
     {
-        public delegate void OnMessageSentDelegate(MessageDataSentReportSuccess pMessageSentReportSuccess);
-        public delegate void OnMessageNotSentDelegate(MessageDataSentReportFail pMessageSentReportFail);
-
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
@@ -33,6 +33,23 @@ namespace NMessaging.Transport.Message.Data
         //////////////////////////////
 
         public event OnMessageNotSentDelegate OnMessageNotSent;
+
+
+        //////////////////////////////
+        //          METHODS         //
+        //////////////////////////////
+
+        public void MessageWasSent(Guid pMessageID, long pProcessingTime)
+        {
+            this.OnMessageSent(new MessageDataSentReport(pMessageID, pProcessingTime));
+        }
+
+        //////////////////////////////
+
+        public void MessageWasNotSent(Guid pMessageID)
+        {
+            OnMessageNotSent(new MessageDataNotSentReport(pMessageID));
+        }
 
         //////////////////////////////
     }
