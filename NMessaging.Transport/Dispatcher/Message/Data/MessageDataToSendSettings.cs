@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace NMessaging.Transport.Message.Data
+namespace NMessaging.Transport.Dispatcher.Message.Data
 {
     public class MessageDataToSendSettings
     {

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using NMessaging.Transport.Dispatcher.Queue;
 using NMessaging.Transport.Dispatcher.Queue.OnError;
-using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher
 {

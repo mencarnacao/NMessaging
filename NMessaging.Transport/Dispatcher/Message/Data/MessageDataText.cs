@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Message.Data
+namespace NMessaging.Transport.Dispatcher.Message.Data
 {
-    public class MessageDataReceived : AMessageData
+    public class MessageDataText : AMessageData<string>
     {
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageDataReceived(Guid pMessageID, short pVersion)
-            : base(pMessageID, pVersion)
+        protected MessageDataText(Guid pMessageID, short pVersion, string pData)
+            : base(pMessageID, pVersion, pData)
         { }
 
 
@@ -19,7 +19,7 @@ namespace NMessaging.Transport.Message.Data
 
         public override MessageDataType MessageDataType
         {
-            get { return MessageDataType.Received; }
+            get { return MessageDataType.Text;}
         }
 
         //////////////////////////////

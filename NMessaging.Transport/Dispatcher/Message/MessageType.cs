@@ -1,4 +1,4 @@
-﻿namespace NMessaging.Transport.Message
+﻿namespace NMessaging.Transport.Dispatcher.Message
 {
     public enum MessageType
     {

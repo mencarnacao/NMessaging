@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NMessaging.Transport.Message.Data;
+using NMessaging.Transport.Dispatcher.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher.Queue.OnError
 {
@@ -17,8 +17,8 @@ namespace NMessaging.Transport.Dispatcher.Queue.OnError
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageToSendOnQueueError(MessageDataToSend pMessageDataToSend, MessageDataToSendSettings pMessageDataToSendSettings)
-            : base(pMessageDataToSend, pMessageDataToSendSettings)
+        public MessageToSendOnQueueError(IMessageData pMessageData, MessageDataToSendSettings pMessageDataToSendSettings)
+            : base(pMessageData, pMessageDataToSendSettings)
         { }
 
 

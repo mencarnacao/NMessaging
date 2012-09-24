@@ -40,30 +40,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dispatcher\MessageSerialization.cs" />
+    <Compile Include="Dispatcher\Message\Data\MessageDataMixed.cs" />
+    <Compile Include="Dispatcher\Message\Data\MessageDataBinary.cs" />
+    <Compile Include="Dispatcher\Message\Data\MessageDataText.cs" />
     <Compile Include="Dispatcher\Queue\OnError\MessageToSendOnQueueError.cs" />
     <Compile Include="Dispatcher\MessageDispatcherWorker.cs" />
     <Compile Include="Dispatcher\Queue\MessageToSendOnQueue.cs" />
     <Compile Include="Dispatcher\MessageDispatcherSettings.cs" />
     <Compile Include="Dispatcher\MessageDispatcher.cs" />
     <Compile Include="Dispatcher\ServerSocketHandler.cs" />
-    <Compile Include="Message\Data\AMessageData.cs" />
+    <Compile Include="Dispatcher\Message\Data\AMessageData.cs" />
     <Compile Include="Dispatcher\Queue\OnError\MessageDataNotSentError.cs" />
-    <Compile Include="Message\Data\MessageDataReceived.cs" />
-    <Compile Include="Message\Data\IMessageData.cs" />
-    <Compile Include="Message\Data\MessageDataToSend.cs" />
-    <Compile Include="Message\Data\MessageDataType.cs" />
+    <Compile Include="Dispatcher\Message\Data\IMessageData.cs" />
+    <Compile Include="Dispatcher\Message\Data\MessageDataType.cs" />
     <Compile Include="Dispatcher\Queue\OnError\MessageDataNotSentErrorType.cs" />
-    <Compile Include="Message\Data\MessageDataToSendSettings.cs" />
-    <Compile Include="Message\Data\Reporting\MessageDataNotSentReport.cs" />
-    <Compile Include="Message\Data\Reporting\IMessageDataReport.cs" />
-    <Compile Include="Message\Data\Reporting\MessageDataSentReport.cs">
+    <Compile Include="Dispatcher\Message\Data\MessageDataToSendSettings.cs" />
+    <Compile Include="Dispatcher\Message\Data\Reporting\MessageDataNotSentReport.cs" />
+    <Compile Include="Dispatcher\Message\Data\Reporting\IMessageDataReport.cs" />
+    <Compile Include="Dispatcher\Message\Data\Reporting\MessageDataSentReport.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Message\MessageType.cs" />
+    <Compile Include="Dispatcher\Message\MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Message\Diagnostics\" />
+    <Folder Include="Dispatcher\Message\Diagnostics\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

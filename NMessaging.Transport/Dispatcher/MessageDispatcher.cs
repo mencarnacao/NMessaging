@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
+using NMessaging.Transport.Dispatcher.Message.Data;
 using NMessaging.Transport.Dispatcher.Queue;
 using NMessaging.Transport.Dispatcher.Queue.OnError;
-using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Dispatcher
 {
@@ -56,11 +53,11 @@ namespace NMessaging.Transport.Dispatcher
 
         //////////////////////////////
 
-        public void Send(MessageDataToSend pMessageToSend, MessageDataToSendSettings pMessageDataToSendSettings)
+        public void Send(IMessageData pMessageData, MessageDataToSendSettings pMessageDataToSendSettings)
         {
             if (_bDoWork)
             {
-                _oMessagesQueue.Value.Enqueue(new MessageToSendOnQueue(pMessageToSend, pMessageDataToSendSettings));
+                _oMessagesQueue.Value.Enqueue(new MessageToSendOnQueue(pMessageData, pMessageDataToSendSettings));
             }
         }
 
@@ -82,7 +79,7 @@ namespace NMessaging.Transport.Dispatcher
 
         private void MessageWasSent(MessageToSendOnQueue pMessageToSendOnQueue)
         {
-            pMessageToSendOnQueue.MessageDataToSend.MessageWasSent(pMessageToSendOnQueue.MessageID, pMessageToSendOnQueue.ProcessingTime);
+            pMessageToSendOnQueue.MessageData.MessageWasSent(pMessageToSendOnQueue.MessageID, pMessageToSendOnQueue.ProcessingTime);
         }
 
         //////////////////////////////
