@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Dispatcher.Queue.OnError
+namespace NMessaging.Transport.Outgoing.Queue.OnError
 {
     public class MessageDataNotSentError
     {

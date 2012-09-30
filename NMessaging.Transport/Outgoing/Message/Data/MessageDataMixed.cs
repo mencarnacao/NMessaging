@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NMessaging.Transport.Dispatcher.Message.Data
+namespace NMessaging.Transport.Outgoing.Message.Data
 {
     public class MessageDataMixed : AMessageData<Dictionary<string, Dictionary<string, object>>>
     {

@@ -1,6 +1,6 @@
-﻿using NMessaging.Transport.Dispatcher.Message.Data;
+﻿using NMessaging.Transport.Outgoing.Message.Data;
 
-namespace NMessaging.Transport.Dispatcher
+namespace NMessaging.Transport.Outgoing
 {
     public static class MessageSerialization
     {

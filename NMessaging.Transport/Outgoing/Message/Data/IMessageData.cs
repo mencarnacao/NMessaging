@@ -1,25 +1,22 @@
 ﻿using System;
 
-using NMessaging.Transport.Dispatcher.Message.Data.Reporting;
+using NMessaging.Transport.Outgoing.Message.Data.Reporting;
+using NMessaging.Transport.Message;
 
-namespace NMessaging.Transport.Dispatcher.Message.Data
+namespace NMessaging.Transport.Outgoing.Message.Data
 {
     public delegate void OnMessageSentDelegate(MessageDataSentReport pMessageDataSentReport);
     public delegate void OnMessageNotSentDelegate(MessageDataNotSentReport pMessageDataNotSentReport);
 
-    public interface IMessageData
+    public interface IMessageData : IMessage
     {
         //////////////////////////////
         //         PROPERTIES       //
         //////////////////////////////
 
-        Guid MessageID { get; }
-
-        MessageType MessageType { get; }
+        MessageContentType MessageContentType { get; }
 
         MessageDataType MessageDataType { get; }
-
-        long Version { get; }
 
 
         //////////////////////////////

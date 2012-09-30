@@ -1,4 +1,4 @@
-﻿namespace NMessaging.Transport.Dispatcher
+﻿namespace NMessaging.Transport.Outgoing
 {
     public class MessageDispatcherSettings
     {

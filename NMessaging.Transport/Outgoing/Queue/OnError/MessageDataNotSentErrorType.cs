@@ -1,4 +1,4 @@
-﻿namespace NMessaging.Transport.Dispatcher.Queue.OnError
+﻿namespace NMessaging.Transport.Outgoing.Queue.OnError
 {
     public enum MessageDataNotSentErrorType
     {

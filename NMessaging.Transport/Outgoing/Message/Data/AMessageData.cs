@@ -1,7 +1,8 @@
 ﻿using System;
-using NMessaging.Transport.Dispatcher.Message.Data.Reporting;
+using NMessaging.Transport.Message;
+using NMessaging.Transport.Outgoing.Message.Data.Reporting;
 
-namespace NMessaging.Transport.Dispatcher.Message.Data
+namespace NMessaging.Transport.Outgoing.Message.Data
 {
     public abstract class AMessageData<T> : IMessageData
     {
@@ -30,9 +31,9 @@ namespace NMessaging.Transport.Dispatcher.Message.Data
         //         PROPERTIES       //
         //////////////////////////////
 
-        public MessageType MessageType
+        public MessageContentType MessageContentType
         {
-            get { return MessageType.Data; }
+            get { return MessageContentType.Data; }
         }
 
         //////////////////////////////
@@ -48,6 +49,13 @@ namespace NMessaging.Transport.Dispatcher.Message.Data
 
         //////////////////////////////
 
+        public MessageOnTransportType MessageOnTransportType
+        {
+            get { return MessageOnTransportType.Outgoing; }
+        }
+
+        //////////////////////////////
+
         public long Version
         {
             get { return _iVersion; }
@@ -57,7 +65,7 @@ namespace NMessaging.Transport.Dispatcher.Message.Data
 
         public T Data
         {
-            get { return _iVersion; }
+            get { return _oData; }
         }
 
         //////////////////////////////

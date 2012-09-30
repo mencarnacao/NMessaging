@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Dispatcher.Message.Data.Reporting
+namespace NMessaging.Transport.Outgoing.Message.Data.Reporting
 {
     public class MessageDataSentReport : IMessageDataReport
     {

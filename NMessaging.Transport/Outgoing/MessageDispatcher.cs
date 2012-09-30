@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using NMessaging.Transport.Dispatcher.Message.Data;
-using NMessaging.Transport.Dispatcher.Queue;
-using NMessaging.Transport.Dispatcher.Queue.OnError;
+using NMessaging.Transport.Outgoing.Message.Data;
+using NMessaging.Transport.Outgoing.Queue;
+using NMessaging.Transport.Outgoing.Queue.OnError;
 
-namespace NMessaging.Transport.Dispatcher
+namespace NMessaging.Transport.Outgoing
 {
     public delegate void MessageNotSentDelegate(MessageToSendOnQueue pMessageToSendOnQueue, MessageDataNotSentError pMessageDataNotSentError);
     public delegate void MessageSentDelegate(MessageToSendOnQueue pMessageToSendOnQueue);
@@ -89,7 +89,7 @@ namespace NMessaging.Transport.Dispatcher
 
             //if message has failed more that te number of maximum tries, then message has failed
 
-            var messageToSendOnQueueError = new MessageToSendOnQueueError(pMessageToSendOnQueue.MessageDataToSend, pMessageToSendOnQueue.MessageDataToSendSettings);
+            var messageToSendOnQueueError = new MessageToSendOnQueueError(pMessageToSendOnQueue.MessageData, pMessageToSendOnQueue.MessageDataToSendSettings);
 
             messageToSendOnQueueError.MessageDataSentFailures.Add(pMessageDataNotSentError);
 

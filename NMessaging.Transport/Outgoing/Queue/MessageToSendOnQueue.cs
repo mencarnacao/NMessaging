@@ -1,7 +1,7 @@
 ﻿using System;
-using NMessaging.Transport.Dispatcher.Message.Data;
+using NMessaging.Transport.Outgoing.Message.Data;
 
-namespace NMessaging.Transport.Dispatcher.Queue
+namespace NMessaging.Transport.Outgoing.Queue
 {
     public class MessageToSendOnQueue
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
-using NMessaging.Transport.Dispatcher.Queue;
-using NMessaging.Transport.Dispatcher.Queue.OnError;
+using NMessaging.Transport.Outgoing.Queue;
+using NMessaging.Transport.Outgoing.Queue.OnError;
 
-namespace NMessaging.Transport.Dispatcher
+namespace NMessaging.Transport.Outgoing
 {
     public class MessageDispatcherWorker
     {

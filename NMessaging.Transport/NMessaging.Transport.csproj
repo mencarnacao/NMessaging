@@ -40,32 +40,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dispatcher\MessageSerialization.cs" />
-    <Compile Include="Dispatcher\Message\Data\MessageDataMixed.cs" />
-    <Compile Include="Dispatcher\Message\Data\MessageDataBinary.cs" />
-    <Compile Include="Dispatcher\Message\Data\MessageDataText.cs" />
-    <Compile Include="Dispatcher\Queue\OnError\MessageToSendOnQueueError.cs" />
-    <Compile Include="Dispatcher\MessageDispatcherWorker.cs" />
-    <Compile Include="Dispatcher\Queue\MessageToSendOnQueue.cs" />
-    <Compile Include="Dispatcher\MessageDispatcherSettings.cs" />
-    <Compile Include="Dispatcher\MessageDispatcher.cs" />
-    <Compile Include="Dispatcher\ServerSocketHandler.cs" />
-    <Compile Include="Dispatcher\Message\Data\AMessageData.cs" />
-    <Compile Include="Dispatcher\Queue\OnError\MessageDataNotSentError.cs" />
-    <Compile Include="Dispatcher\Message\Data\IMessageData.cs" />
-    <Compile Include="Dispatcher\Message\Data\MessageDataType.cs" />
-    <Compile Include="Dispatcher\Queue\OnError\MessageDataNotSentErrorType.cs" />
-    <Compile Include="Dispatcher\Message\Data\MessageDataToSendSettings.cs" />
-    <Compile Include="Dispatcher\Message\Data\Reporting\MessageDataNotSentReport.cs" />
-    <Compile Include="Dispatcher\Message\Data\Reporting\IMessageDataReport.cs" />
-    <Compile Include="Dispatcher\Message\Data\Reporting\MessageDataSentReport.cs">
+    <Compile Include="Message\IMessage.cs" />
+    <Compile Include="Message\MessageType.cs" />
+    <Compile Include="Outgoing\MessageSerialization.cs" />
+    <Compile Include="Outgoing\Message\Data\MessageDataMixed.cs" />
+    <Compile Include="Outgoing\Message\Data\MessageDataBinary.cs" />
+    <Compile Include="Outgoing\Message\Data\MessageDataText.cs" />
+    <Compile Include="Outgoing\Queue\OnError\MessageToSendOnQueueError.cs" />
+    <Compile Include="Outgoing\MessageDispatcherWorker.cs" />
+    <Compile Include="Outgoing\Queue\MessageToSendOnQueue.cs" />
+    <Compile Include="Outgoing\MessageDispatcherSettings.cs" />
+    <Compile Include="Outgoing\MessageDispatcher.cs" />
+    <Compile Include="Outgoing\ServerSocketHandler.cs" />
+    <Compile Include="Outgoing\Message\Data\AMessageData.cs" />
+    <Compile Include="Outgoing\Queue\OnError\MessageDataNotSentError.cs" />
+    <Compile Include="Outgoing\Message\Data\IMessageData.cs" />
+    <Compile Include="Outgoing\Message\Data\MessageDataType.cs" />
+    <Compile Include="Outgoing\Queue\OnError\MessageDataNotSentErrorType.cs" />
+    <Compile Include="Outgoing\Message\Data\MessageDataToSendSettings.cs" />
+    <Compile Include="Outgoing\Message\Data\Reporting\MessageDataNotSentReport.cs" />
+    <Compile Include="Outgoing\Message\Data\Reporting\IMessageDataReport.cs" />
+    <Compile Include="Outgoing\Message\Data\Reporting\MessageDataSentReport.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dispatcher\Message\MessageType.cs" />
+    <Compile Include="Outgoing\Message\MessageContentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dispatcher\Message\Diagnostics\" />
+    <Folder Include="Outgoing\Message\Diagnostics\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,14 +1,18 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Dispatcher.Message.Data.Reporting
+namespace NMessaging.Transport.Message
 {
-    public interface IMessageDataReport
+    public interface IMessage
     {
         //////////////////////////////
         //         PROPERTIES       //
         //////////////////////////////
 
         Guid MessageID { get; }
+
+        MessageOnTransportType MessageOnTransportType { get; }
+
+        long Version { get; }
 
         //////////////////////////////
     }
