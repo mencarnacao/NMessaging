@@ -8,12 +8,12 @@ namespace NMessaging.Transport.Outgoing
         //          METHODS         //
         //////////////////////////////
 
-        public static byte[] SerializeMessage(MessageDispatcherSettings pMessageDispatcherSettings, IMessageData pMessageData)
-        {
-            //message hash
+        //public static byte[] SerializeMessage(MessageDispatcherSettings pMessageDispatcherSettings, IMessageData pMessageData)
+        //{
+        //    //message hash
 
-            return null;
-        }
+        //    return null;
+        //}
 
         //////////////////////////////
     }

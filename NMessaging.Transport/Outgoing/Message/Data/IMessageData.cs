@@ -30,5 +30,9 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         void MessageWasNotSent(Guid pMessageID);
 
         //////////////////////////////
+
+        byte[] Serialize();
+
+        //////////////////////////////
     }
 }

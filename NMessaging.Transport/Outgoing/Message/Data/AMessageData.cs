@@ -94,5 +94,12 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         }
 
         //////////////////////////////
+
+        public byte[] Serialize()
+        {
+            return MessageDataSerialization.Serialize(this);
+        }
+
+        //////////////////////////////
     }
 }

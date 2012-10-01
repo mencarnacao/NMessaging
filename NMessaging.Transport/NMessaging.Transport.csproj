@@ -45,6 +45,7 @@
     <Compile Include="Outgoing\MessageSerialization.cs" />
     <Compile Include="Outgoing\Message\Data\MessageDataMixed.cs" />
     <Compile Include="Outgoing\Message\Data\MessageDataBinary.cs" />
+    <Compile Include="Outgoing\Message\Data\MessageDataSerialization.cs" />
     <Compile Include="Outgoing\Message\Data\MessageDataText.cs" />
     <Compile Include="Outgoing\Queue\OnError\MessageToSendOnQueueError.cs" />
     <Compile Include="Outgoing\MessageDispatcherWorker.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Incoming\" />
     <Folder Include="Outgoing\Message\Diagnostics\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
