@@ -1,10 +1,11 @@
 ﻿using System;
 using NMessaging.Transport.Message;
 using NMessaging.Transport.Outgoing.Message.Data.Reporting;
+using NMessaging.Transport.Outgoing.Message.Data.Trace;
 
 namespace NMessaging.Transport.Outgoing.Message.Data
 {
-    public abstract class AMessageData<T> : IMessageData
+    public abstract class AMessageData<T> : IMessageData<T>
     {
         //////////////////////////////
         //          MEMBERS         //
@@ -13,6 +14,7 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         private readonly Guid _oMessageID = default(Guid);
         private readonly short _iVersion = default(short);
         protected T _oData = default(T);
+        protected TraceStage _oTraceStage = default(TraceStage);
 
 
         //////////////////////////////
@@ -24,6 +26,7 @@ namespace NMessaging.Transport.Outgoing.Message.Data
             _oMessageID = pMessageID;
             _iVersion = pVersion;
             _oData = pData;
+            _oTraceStage = new TraceStage(this);
         }
 
 
@@ -66,6 +69,13 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         public T Data
         {
             get { return _oData; }
+        }
+
+        //////////////////////////////
+
+        public TraceStage TraceStage
+        {
+            get { throw new NotImplementedException(); }
         }
 
         //////////////////////////////

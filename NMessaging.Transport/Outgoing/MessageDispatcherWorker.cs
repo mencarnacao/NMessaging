@@ -66,6 +66,13 @@ namespace NMessaging.Transport.Outgoing
                             }
                         }
                     }
+                    //catch (NetworkException exception)
+                    //{
+                    //    _oMessageNotSentDelegate(_oMessageToProcess,
+                    //                             new MessageDataNotSentError(
+                    //                                 MessageDataNotSentErrorType.DestinationNotAvailable, DateTime.Now,
+                    //                                 exception));
+                    //}
                     catch (Exception exception)
                     {
                         _oMessageNotSentDelegate(_oMessageToProcess,
@@ -107,7 +114,7 @@ namespace NMessaging.Transport.Outgoing
         {
             _oMessageToProcess = pMessageToSendOnQueue;
 
-            _oMessageNotSentDelegate(_oMessageToProcess, new MessageDataNotSentError(MessageDataNotSentErrorType.DestinationNotAvailable, DateTime.Now));
+            pMessageToSendOnQueue.MessageData.TraceStage.DateProcessingStarted = DateTime.UtcNow;
 
             _oAutoResetEvent.Set();
         }

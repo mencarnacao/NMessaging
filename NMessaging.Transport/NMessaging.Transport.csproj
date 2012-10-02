@@ -42,11 +42,12 @@
   <ItemGroup>
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Message\MessageType.cs" />
-    <Compile Include="Outgoing\MessageSerialization.cs" />
     <Compile Include="Outgoing\Message\Data\MessageDataMixed.cs" />
     <Compile Include="Outgoing\Message\Data\MessageDataBinary.cs" />
-    <Compile Include="Outgoing\Message\Data\MessageDataSerialization.cs" />
+    <Compile Include="Outgoing\Message\Data\Serialization\MessageDataRaw.cs" />
+    <Compile Include="Outgoing\Message\Data\Serialization\MessageDataSerialization.cs" />
     <Compile Include="Outgoing\Message\Data\MessageDataText.cs" />
+    <Compile Include="Outgoing\Message\Data\Trace\TraceStage.cs" />
     <Compile Include="Outgoing\Queue\OnError\MessageToSendOnQueueError.cs" />
     <Compile Include="Outgoing\MessageDispatcherWorker.cs" />
     <Compile Include="Outgoing\Queue\MessageToSendOnQueue.cs" />

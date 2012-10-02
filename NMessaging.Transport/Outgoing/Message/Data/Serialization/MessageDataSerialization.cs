@@ -3,16 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NMessaging.Transport.Outgoing.Message.Data
+namespace NMessaging.Transport.Outgoing.Message.Data.Serialization
 {
     public static class MessageDataSerialization
     {
         //////////////////////////////
+        //          MEMBERS         //
+        //////////////////////////////
+
+        private const int MessageIDSize = 36;
+        private const int VersionSize = 16;
+        private const int SenderIDSize = 25;
+        private const int SenderAddressSize = 23;
+        private const int MessageHashSize = 10;
+        private const int MessageTypeSize = 10;
+        private const int DateSentSize = 19;
+
+
+        //////////////////////////////
         //          METHODS         //
         //////////////////////////////
 
-        public static byte[] Serialize(IMessageData pMessageData)
+        public static byte[] Serialize(IMessageData<> pMessageData)
         {
+            pMessageData.TraceStage.DateMessageSerializationStarted = DateTime.UtcNow;
+
+            long iArraySize = MessageIDSize + VersionSize + SenderIDSize + SenderAddressSize + MessageHashSize +
+                              MessageTypeSize + DateSentSize;
+
+            byte[] oData = new byte[1];
+
+            
+
+
             //header size       
             //MessageID         
             //Version               16
@@ -23,6 +46,9 @@ namespace NMessaging.Transport.Outgoing.Message.Data
             //message type
             //content length
             //content
+
+
+            pMessageData.TraceStage.DateMessageSerializationFinished = DateTime.UtcNow;
 
             return null;
         }
