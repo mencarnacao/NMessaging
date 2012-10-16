@@ -4,7 +4,7 @@ using NMessaging.Transport.Message.Outgoing.Data.Trace;
 
 namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public abstract class AMessageData<T> : IMessageData
+    public abstract class AMessageDataOutgoing<T> : IMessageDataOutgoing
     {
         //////////////////////////////
         //          MEMBERS         //
@@ -20,7 +20,7 @@ namespace NMessaging.Transport.Message.Outgoing.Data
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        protected AMessageData(Guid pMessageID, short pVersion, T pData)
+        protected AMessageDataOutgoing(Guid pMessageID, short pVersion, T pData)
         {
             _oMessageID = pMessageID;
             _iVersion = pVersion;

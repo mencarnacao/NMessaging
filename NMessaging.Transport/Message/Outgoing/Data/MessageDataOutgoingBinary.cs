@@ -1,14 +1,15 @@
 ﻿using System;
+using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public class MessageDataText : AMessageData<string>
+    public class MessageDataOutgoingBinary : AMessageDataOutgoing<byte[]>, IMessageDataBinary
     {
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        protected MessageDataText(Guid pMessageID, short pVersion, string pData)
+        protected MessageDataOutgoingBinary(Guid pMessageID, short pVersion, byte[] pData)
             : base(pMessageID, pVersion, pData)
         { }
 
@@ -20,6 +21,13 @@ namespace NMessaging.Transport.Message.Outgoing.Data
         public override MessageDataType MessageDataType
         {
             get { return MessageDataType.Text;}
+        }
+
+        //////////////////////////////
+
+        public new byte[] Data
+        {
+            get { throw new NotImplementedException(); }
         }
 
         //////////////////////////////

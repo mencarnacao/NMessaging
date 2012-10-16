@@ -23,32 +23,32 @@ namespace NMessaging.Transport.Message
         //          METHODS         //
         //////////////////////////////
 
-        public static byte[] Serialize(MessageDataBinary pMessage)
+        public static byte[] Serialize(MessageDataOutgoingBinary pMessage)
         {
             return (byte[])pMessage.Data;
         }
 
         //////////////////////////////
 
-        public static byte[] Serialize(MessageDataMixed pMessage)
+        public static byte[] Serialize(MessageDataOutgoingMixed pMessage)
         {
-            var oData = (Dictionary<Type, Dictionary<string, object>>) pMessage.Data;
+            //var oData = (Dictionary<Type, Dictionary<string, object>>) pMessage.Data;
 
-            foreach (var oItem in oData)
-            {
-                if(oItem.Key == typeof(int))
-                {
+            //foreach (var oItem in oData)
+            //{
+            //    if(oItem.Key == typeof(int))
+            //    {
 
-                }
-                else if (oItem.Key == typeof(string))
-                {
+            //    }
+            //    else if (oItem.Key == typeof(string))
+            //    {
 
-                }
-                else if (oItem.Key == typeof(bool))
-                {
+            //    }
+            //    else if (oItem.Key == typeof(bool))
+            //    {
 
-                }
-            }
+            //    }
+            //}
 
 
 
@@ -57,7 +57,7 @@ namespace NMessaging.Transport.Message
 
         //////////////////////////////
 
-        public static byte[] Serialize(MessageDataText pMessage)
+        public static byte[] Serialize(MessageDataOutgoingText pMessage)
         {
             var strData = (string) pMessage.Data;
 

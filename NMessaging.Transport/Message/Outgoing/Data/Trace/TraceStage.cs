@@ -8,7 +8,7 @@ namespace NMessaging.Transport.Message.Outgoing.Data.Trace
         //          MEMBERS         //
         //////////////////////////////
 
-        private readonly IMessageData _oMessage = default(IMessageData);
+        private readonly IMessageDataOutgoing _oMessage = default(IMessageDataOutgoing);
         private DateTime _oDateProcessingStarted = default(DateTime);
         private DateTime _oDateMessageSerializationStarted = default(DateTime);
         private DateTime _oDateMessageSerializationFinished = default(DateTime);
@@ -18,7 +18,7 @@ namespace NMessaging.Transport.Message.Outgoing.Data.Trace
         //       CONSTRUCTORS       //
         //////////////////////////////
         
-        public TraceStage(IMessageData pMessageData)
+        public TraceStage(IMessageDataOutgoing pMessageData)
         {
             _oMessage = pMessageData;
         }
@@ -28,7 +28,7 @@ namespace NMessaging.Transport.Message.Outgoing.Data.Trace
         //        PROPERTIES        //
         //////////////////////////////
 
-        public IMessageData MessageData
+        public IMessageDataOutgoing MessageData
         {
             get { return _oMessage; }
         }

@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
+using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public class MessageDataMixed : AMessageData<Dictionary<Type, Dictionary<string, object>>>
+    public class MessageDataOutgoingText : AMessageDataOutgoing<string>, MessageDataText
     {
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        protected MessageDataMixed(Guid pMessageID, short pVersion, Dictionary<Type, Dictionary<string, object>> pData)
+        protected MessageDataOutgoingText(Guid pMessageID, short pVersion, string pData)
             : base(pMessageID, pVersion, pData)
         { }
 
@@ -25,12 +25,16 @@ namespace NMessaging.Transport.Message.Outgoing.Data
 
         //////////////////////////////
 
+        public new string Data
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        //////////////////////////////
+
         public override byte[] SerializedMessageContent
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { throw new NotImplementedException(); }
         }
 
         //////////////////////////////

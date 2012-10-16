@@ -1,4 +1,4 @@
-﻿namespace NMessaging.Transport.Message.Outgoing
+﻿namespace NMessaging.Transport.Message
 {
     public enum MessageContentType
     {

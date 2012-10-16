@@ -40,13 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Message\Data\IMessageData.cs" />
+    <Compile Include="Message\Data\IMessageDataBinary.cs" />
+    <Compile Include="Message\Data\MessageDataMixed.cs" />
+    <Compile Include="Message\Data\MessageDataText.cs" />
+    <Compile Include="Message\MessageDataTypeFieldFactory.cs" />
     <Compile Include="Message\MessageUnSerialization.cs" />
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Message\MessageSerialization.cs" />
     <Compile Include="Message\MessageType.cs" />
-    <Compile Include="Message\Outgoing\Data\MessageDataMixed.cs" />
-    <Compile Include="Message\Outgoing\Data\MessageDataBinary.cs" />
-    <Compile Include="Message\Outgoing\Data\MessageDataText.cs" />
+    <Compile Include="Message\Outgoing\Data\MixedMessageDataTypes\IMessageDataTypeField.cs" />
+    <Compile Include="Message\Outgoing\Data\MessageDataOutgoingMixed.cs" />
+    <Compile Include="Message\Outgoing\Data\MessageDataOutgoingBinary.cs" />
+    <Compile Include="Message\Outgoing\Data\MessageDataOutgoingText.cs" />
+    <Compile Include="Message\Outgoing\Data\MixedMessageDataTypes\AMessageDataTypeField.cs" />
     <Compile Include="Message\Outgoing\Data\Trace\TraceStage.cs" />
     <Compile Include="Channel\Outgoing\Queue\OnError\MessageToSendOnQueueError.cs" />
     <Compile Include="Channel\Outgoing\MessageDispatcherWorker.cs" />
@@ -54,10 +61,10 @@
     <Compile Include="Channel\Outgoing\MessageDispatcherSettings.cs" />
     <Compile Include="Channel\Outgoing\MessageDispatcher.cs" />
     <Compile Include="Channel\Outgoing\ServerSocketHandler.cs" />
-    <Compile Include="Message\Outgoing\Data\AMessageData.cs" />
+    <Compile Include="Message\Outgoing\Data\AMessageDataOutgoing.cs" />
     <Compile Include="Channel\Outgoing\Queue\OnError\MessageDataNotSentError.cs" />
-    <Compile Include="Message\Outgoing\Data\IMessageData.cs" />
-    <Compile Include="Message\Outgoing\Data\MessageDataType.cs" />
+    <Compile Include="Message\Outgoing\Data\IMessageDataOutgoing.cs" />
+    <Compile Include="Message\MessageDataType.cs" />
     <Compile Include="Channel\Outgoing\Queue\OnError\MessageDataNotSentErrorType.cs" />
     <Compile Include="Message\Outgoing\Data\MessageDataToSendSettings.cs" />
     <Compile Include="Message\Outgoing\Data\Reporting\MessageDataNotSentReport.cs" />
@@ -65,7 +72,7 @@
     <Compile Include="Message\Outgoing\Data\Reporting\MessageDataSentReport.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Message\Outgoing\MessageContentType.cs" />
+    <Compile Include="Message\MessageContentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

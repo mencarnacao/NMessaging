@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using NMessaging.Transport.Message.Data;
+using NMessaging.Transport.Message.Outgoing.Data.MixedMessageDataTypes;
 
 namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public class MessageDataBinary : AMessageData<byte[]>
+    public class MessageDataOutgoingMixed : AMessageDataOutgoing<List<IMessageDataTypeField>>, MessageDataMixed
     {
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        protected MessageDataBinary(Guid pMessageID, short pVersion, byte[] pData)
+        protected MessageDataOutgoingMixed(Guid pMessageID, short pVersion, List<IMessageDataTypeField> pData)
             : base(pMessageID, pVersion, pData)
         { }
 
@@ -19,7 +22,14 @@ namespace NMessaging.Transport.Message.Outgoing.Data
 
         public override MessageDataType MessageDataType
         {
-            get { return MessageDataType.Text;}
+            get { return MessageDataType.Text; }
+        }
+
+        //////////////////////////////
+
+        public new List<IMessageDataTypeField> Data
+        {
+            get { throw new NotImplementedException(); }
         }
 
         //////////////////////////////
