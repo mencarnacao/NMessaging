@@ -1,11 +1,10 @@
 ﻿using System;
-using NMessaging.Transport.Message;
-using NMessaging.Transport.Outgoing.Message.Data.Reporting;
-using NMessaging.Transport.Outgoing.Message.Data.Trace;
+using NMessaging.Transport.Message.Outgoing.Data.Reporting;
+using NMessaging.Transport.Message.Outgoing.Data.Trace;
 
-namespace NMessaging.Transport.Outgoing.Message.Data
+namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public abstract class AMessageData<T> : IMessageData<T>
+    public abstract class AMessageData<T> : IMessageData
     {
         //////////////////////////////
         //          MEMBERS         //
@@ -66,7 +65,7 @@ namespace NMessaging.Transport.Outgoing.Message.Data
 
         //////////////////////////////
 
-        public T Data
+        public object Data
         {
             get { return _oData; }
         }
@@ -77,6 +76,10 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         {
             get { throw new NotImplementedException(); }
         }
+
+        //////////////////////////////
+
+        public abstract byte[] SerializedMessageContent { get; }
 
         //////////////////////////////
 
@@ -101,13 +104,6 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         public void MessageWasNotSent(Guid pMessageID)
         {
             OnMessageNotSent(new MessageDataNotSentReport(pMessageID));
-        }
-
-        //////////////////////////////
-
-        public byte[] Serialize()
-        {
-            return MessageDataSerialization.Serialize(this);
         }
 
         //////////////////////////////

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Outgoing.Message.Data
+namespace NMessaging.Transport.Message.Outgoing.Data
 {
     public class MessageDataText : AMessageData<string>
     {
@@ -20,6 +20,13 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         public override MessageDataType MessageDataType
         {
             get { return MessageDataType.Text;}
+        }
+
+        //////////////////////////////
+
+        public override byte[] SerializedMessageContent
+        {
+            get { throw new NotImplementedException(); }
         }
 
         //////////////////////////////

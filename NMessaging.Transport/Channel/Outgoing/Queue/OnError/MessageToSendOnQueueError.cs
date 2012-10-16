@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using NMessaging.Transport.Outgoing.Message.Data;
+using NMessaging.Transport.Message.Outgoing.Data;
 
-namespace NMessaging.Transport.Outgoing.Queue.OnError
+namespace NMessaging.Transport.Channel.Outgoing.Queue.OnError
 {
     public class MessageToSendOnQueueError : MessageToSendOnQueue
     {

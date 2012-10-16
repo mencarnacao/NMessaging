@@ -1,14 +1,13 @@
 ﻿using System;
-using NMessaging.Transport.Outgoing.Message.Data.Reporting;
-using NMessaging.Transport.Message;
-using NMessaging.Transport.Outgoing.Message.Data.Trace;
+using NMessaging.Transport.Message.Outgoing.Data.Reporting;
+using NMessaging.Transport.Message.Outgoing.Data.Trace;
 
-namespace NMessaging.Transport.Outgoing.Message.Data
+namespace NMessaging.Transport.Message.Outgoing.Data
 {
     public delegate void OnMessageSentDelegate(MessageDataSentReport pMessageDataSentReport);
     public delegate void OnMessageNotSentDelegate(MessageDataNotSentReport pMessageDataNotSentReport);
 
-    public interface IMessageData<T> : IMessage
+    public interface IMessageData : IMessage
     {
         //////////////////////////////
         //         PROPERTIES       //
@@ -20,7 +19,7 @@ namespace NMessaging.Transport.Outgoing.Message.Data
 
         TraceStage TraceStage { get; }
 
-        T Data { get; }
+        object Data { get; }
 
 
         //////////////////////////////
@@ -32,10 +31,6 @@ namespace NMessaging.Transport.Outgoing.Message.Data
         //////////////////////////////
 
         void MessageWasNotSent(Guid pMessageID);
-
-        //////////////////////////////
-
-        byte[] Serialize();
 
         //////////////////////////////
     }

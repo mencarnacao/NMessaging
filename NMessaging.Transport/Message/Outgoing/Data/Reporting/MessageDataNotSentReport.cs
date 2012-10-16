@@ -1,25 +1,23 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Outgoing.Message.Data.Reporting
+namespace NMessaging.Transport.Message.Outgoing.Data.Reporting
 {
-    public class MessageDataSentReport : IMessageDataReport
+    public class MessageDataNotSentReport : IMessageDataReport
     {
         //////////////////////////////
         //          MEMBERS         //
         //////////////////////////////
 
         private readonly Guid _oMessageID = default(Guid);
-        private readonly long _iProcessingTime = default(long);
 
 
         //////////////////////////////
         //         PROPERTIES       //
         //////////////////////////////
 
-        public MessageDataSentReport(Guid pMessageID, long pProcessingTime)
+        public MessageDataNotSentReport(Guid pMessageID)
         {
             _oMessageID = pMessageID;
-            _iProcessingTime = pProcessingTime;
         }
 
         //////////////////////////////
@@ -29,13 +27,6 @@ namespace NMessaging.Transport.Outgoing.Message.Data.Reporting
         public Guid MessageID
         {
             get { return _oMessageID; }
-        }
-
-        //////////////////////////////
-
-        public long ProcessingTime
-        {
-            get { return _iProcessingTime; }
         }
 
         //////////////////////////////

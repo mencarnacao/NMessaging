@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Outgoing.Message.Data.Reporting
+namespace NMessaging.Transport.Message.Outgoing.Data.Reporting
 {
     public interface IMessageDataReport
     {

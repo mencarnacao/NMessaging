@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NMessaging.Transport.Outgoing.Message.Data.Trace
+namespace NMessaging.Transport.Message.Outgoing.Data.Trace
 {
     public class TraceStage
     {

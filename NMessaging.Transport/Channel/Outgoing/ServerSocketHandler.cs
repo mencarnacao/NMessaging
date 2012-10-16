@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace NMessaging.Transport.Outgoing
+namespace NMessaging.Transport.Channel.Outgoing
 {
     /*
     public class ServerSocketHandler

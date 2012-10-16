@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using NMessaging.Transport.Outgoing.Message.Data;
-using NMessaging.Transport.Outgoing.Queue;
-using NMessaging.Transport.Outgoing.Queue.OnError;
+using NMessaging.Transport.Channel.Outgoing.Queue;
+using NMessaging.Transport.Channel.Outgoing.Queue.OnError;
+using NMessaging.Transport.Message.Outgoing.Data;
 
-namespace NMessaging.Transport.Outgoing
+namespace NMessaging.Transport.Channel.Outgoing
 {
     public delegate void MessageNotSentDelegate(MessageToSendOnQueue pMessageToSendOnQueue, MessageDataNotSentError pMessageDataNotSentError);
     public delegate void MessageSentDelegate(MessageToSendOnQueue pMessageToSendOnQueue);
