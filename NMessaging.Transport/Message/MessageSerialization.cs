@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using NMessaging.Transport.Message.Outgoing.Data;
 
 namespace NMessaging.Transport.Message
 {
     public static class MessageSerialization
     {
-        //////////////////////////////
-        //          MEMBERS         //
-        //////////////////////////////
-
-        const int MessageIDSize = 36;
-        const int VersionSize = 16;
-        const int SenderIDSize = 25;
-        const int SenderAddressSize = 23;
-        const int MessageHashSize = 10;
-        const int MessageTypeSize = 10;
-        const int DateSentSize = 19;
-
-
         //////////////////////////////
         //          METHODS         //
         //////////////////////////////
@@ -32,23 +23,7 @@ namespace NMessaging.Transport.Message
 
         public static byte[] Serialize(MessageDataOutgoingMixed pMessage)
         {
-            //var oData = (Dictionary<Type, Dictionary<string, object>>) pMessage.Data;
-
-            //foreach (var oItem in oData)
-            //{
-            //    if(oItem.Key == typeof(int))
-            //    {
-
-            //    }
-            //    else if (oItem.Key == typeof(string))
-            //    {
-
-            //    }
-            //    else if (oItem.Key == typeof(bool))
-            //    {
-
-            //    }
-            //}
+ 
 
 
 
@@ -57,15 +32,54 @@ namespace NMessaging.Transport.Message
 
         //////////////////////////////
 
-        public static byte[] Serialize(MessageDataOutgoingText pMessage)
+        private static byte[] Serialize(MessageDataOutgoingText pMessage)
         {
-            var strData = (string) pMessage.Data;
+            var strData = (string)pMessage.Data;
 
             var oBytes = new byte[strData.Length * sizeof(char)];
 
             Buffer.BlockCopy(strData.ToCharArray(), 0, oBytes, 0, oBytes.Length);
 
             return oBytes;
+        }
+
+        //////////////////////////////
+
+        private static IEnumerable<byte> CalculateMessageCrypto(byte[] pMessageContent)
+        {
+            var cryptography = new SHA1CryptoServiceProvider();
+
+            return cryptography.ComputeHash(pMessageContent);
+        }
+
+        //////////////////////////////
+
+        private static byte[] Serialize(IMessageDataOutgoing pMessage)
+        {
+            //if file is large than should save to disk and return a stream reader, the caller needs to have a setting to decide if, based
+            //the message can be saved to ram or if it need to be saved to disk
+            //validate and if not valid throw exception
+
+            var oMessageContent = MessageSerialization.Serialize(pMessage);
+            var oMessage =
+                new List<byte>(MessageConstants.MessageCripto + MessageConstants.MessageID + MessageConstants.Version +
+                               MessageConstants.SenderName + MessageConstants.SenderIpAddress +
+                               MessageConstants.MessageType + MessageConstants.DateSent + MessageConstants.DateSent +
+                               oMessageContent.Length);
+
+            //message size
+            oMessage.AddRange(pMessage.MessageID.ToByteArray());
+            oMessage.AddRange(Encoding.ASCII.GetBytes(pMessage.Version.ToString(CultureInfo.InvariantCulture)));
+            oMessage.AddRange(Encoding.ASCII.GetBytes(Settings.EndPointName));
+            oMessage.AddRange(Encoding.ASCII.GetBytes(Settings.EndPointIpAddress));
+            oMessage.AddRange(Encoding.ASCII.GetBytes(pMessage.MessageDataType.ToString()));
+            oMessage.AddRange(Encoding.ASCII.GetBytes(DateTime.UtcNow.ToString("yyyyMMddHHmmss")));
+            oMessage.AddRange(oMessageContent);
+
+            oMessage.InsertRange(0, MessageSerialization.CalculateMessageCrypto(oMessage.ToArray()));
+            oMessage.InsertRange(0, Encoding.ASCII.GetBytes(oMessage.LongCount().ToString(CultureInfo.InvariantCulture)));
+
+            return oMessage.ToArray();
         }
 
         //////////////////////////////
