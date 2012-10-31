@@ -67,7 +67,7 @@
     <Compile Include="Message\Outgoing\Data\IMessageDataOutgoing.cs" />
     <Compile Include="Message\MessageDataType.cs" />
     <Compile Include="Channel\Outgoing\Queue\OnError\MessageDataNotSentErrorType.cs" />
-    <Compile Include="Message\Outgoing\Data\MessageDataToSendSettings.cs" />
+    <Compile Include="Message\Outgoing\Data\MessageDataOutgoingSettings.cs" />
     <Compile Include="Message\Outgoing\Data\Reporting\MessageDataNotSentReport.cs" />
     <Compile Include="Message\Outgoing\Data\Reporting\IMessageDataReport.cs" />
     <Compile Include="Message\Outgoing\Data\Reporting\MessageDataSentReport.cs">

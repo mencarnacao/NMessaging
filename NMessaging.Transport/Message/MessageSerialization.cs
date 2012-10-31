@@ -23,8 +23,12 @@ namespace NMessaging.Transport.Message
 
         public static byte[] Serialize(MessageDataOutgoingMixed pMessage)
         {
- 
+            var oSerializedMessage = new List<byte>();
 
+            foreach (var oDataField in pMessage.Data)
+            {
+                //oSerializedMessage.
+            }
 
 
             return null;

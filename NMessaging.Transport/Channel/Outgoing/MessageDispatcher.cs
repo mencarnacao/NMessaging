@@ -53,7 +53,7 @@ namespace NMessaging.Transport.Channel.Outgoing
 
         //////////////////////////////
 
-        public void Send(IMessageDataOutgoing pMessageData, MessageDataToSendSettings pMessageDataToSendSettings)
+        public void Send(IMessageDataOutgoing pMessageData, MessageDataOutgoingSettings pMessageDataToSendSettings)
         {
             if (_bDoWork)
             {

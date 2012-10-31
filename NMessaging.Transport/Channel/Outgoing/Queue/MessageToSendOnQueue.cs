@@ -9,7 +9,7 @@ namespace NMessaging.Transport.Channel.Outgoing.Queue
         //          MEMBERS         //
         //////////////////////////////
 
-        protected readonly MessageDataToSendSettings _oMessageDataToSendSettings = default(MessageDataToSendSettings);
+        protected readonly MessageDataOutgoingSettings _oMessageDataToSendSettings = default(MessageDataOutgoingSettings);
         protected readonly IMessageDataOutgoing _oMessageDataToSend = default(IMessageDataOutgoing);
         protected readonly Guid _oMessageID = default(Guid);
         protected long _iProcessingTime = default(long);
@@ -19,7 +19,7 @@ namespace NMessaging.Transport.Channel.Outgoing.Queue
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageToSendOnQueue(IMessageDataOutgoing pMessageDataToSend, MessageDataToSendSettings pMessageDataToSendSettings)
+        public MessageToSendOnQueue(IMessageDataOutgoing pMessageDataToSend, MessageDataOutgoingSettings pMessageDataToSendSettings)
         {
             _oMessageDataToSend = pMessageDataToSend;
             _oMessageDataToSendSettings = pMessageDataToSendSettings;
@@ -31,7 +31,7 @@ namespace NMessaging.Transport.Channel.Outgoing.Queue
         //         PROPERTIES       //
         //////////////////////////////
 
-        public MessageDataToSendSettings MessageDataToSendSettings
+        public MessageDataOutgoingSettings MessageDataToSendSettings
         {
             get { return _oMessageDataToSendSettings; }
         }

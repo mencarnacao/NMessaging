@@ -17,7 +17,7 @@ namespace NMessaging.Transport.Channel.Outgoing.Queue.OnError
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        public MessageToSendOnQueueError(IMessageDataOutgoing pMessageData, MessageDataToSendSettings pMessageDataToSendSettings)
+        public MessageToSendOnQueueError(IMessageDataOutgoing pMessageData, MessageDataOutgoingSettings pMessageDataToSendSettings)
             : base(pMessageData, pMessageDataToSendSettings)
         { }
 
