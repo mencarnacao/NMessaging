@@ -5,7 +5,7 @@ using NMessaging.Transport.Message.Outgoing.Data.MixedMessageDataTypes;
 
 namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public class MessageDataOutgoingMixed : AMessageDataOutgoing<List<IMessageDataTypeField>>, MessageDataMixed
+    public class MessageDataOutgoingMixed : AMessageDataOutgoing<List<IMessageDataTypeField>>, IMessageDataMixed
     {
         //////////////////////////////
         //        CONSTRUCTORS      //

@@ -3,7 +3,7 @@ using NMessaging.Transport.Message.Outgoing.Data.MixedMessageDataTypes;
 
 namespace NMessaging.Transport.Message.Data
 {
-    public interface MessageDataMixed : IMessageData
+    public interface IMessageDataMixed : IMessageData
     {
         //////////////////////////////
         //         PROPERTIES       //

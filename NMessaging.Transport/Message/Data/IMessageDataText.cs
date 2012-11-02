@@ -1,6 +1,6 @@
 ﻿namespace NMessaging.Transport.Message.Data
 {
-    public interface MessageDataText : IMessageData
+    public interface IMessageDataText : IMessageData
     {
         //////////////////////////////
         //         PROPERTIES       //

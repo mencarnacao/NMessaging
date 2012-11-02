@@ -6,13 +6,13 @@
         //          METHODS         //
         //////////////////////////////
 
-        public const int MessageCripto = 36;
-        public const int MessageID = 36;
-        public const int Version = 16;
-        public const int SenderName = 36;
-        public const int SenderIpAddress = 23;
-        public const int MessageType = 10;
-        public const int DateSent = 14;
+        public const int SizeMessageCripto = 36;
+        public const int SizeMessageID = 36;
+        public const int SizeVersion = 16;
+        public const int SizeSenderName = 36;
+        public const int SizeSenderIpAddress = 23;
+        public const int SizeMessageType = 10;
+        public const int SizeDateSent = 14;
 
         //////////////////////////////
     }

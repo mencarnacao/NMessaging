@@ -27,6 +27,10 @@ namespace NMessaging.Transport.Message
 
             foreach (var oDataField in pMessage.Data)
             {
+                oSerializedMessage.AddRange(Encoding.ASCII.GetBytes(oDataField.Name.ToString(CultureInfo.InvariantCulture)));
+                //message 
+                oSerializedMessage.AddRange(Encoding.ASCII.GetBytes(oDataField.Type.ToString()));
+
                 //oSerializedMessage.
             }
 
@@ -66,9 +70,9 @@ namespace NMessaging.Transport.Message
 
             var oMessageContent = MessageSerialization.Serialize(pMessage);
             var oMessage =
-                new List<byte>(MessageConstants.MessageCripto + MessageConstants.MessageID + MessageConstants.Version +
-                               MessageConstants.SenderName + MessageConstants.SenderIpAddress +
-                               MessageConstants.MessageType + MessageConstants.DateSent + MessageConstants.DateSent +
+                new List<byte>(MessageConstants.SizeMessageCripto + MessageConstants.SizeMessageID + MessageConstants.SizeVersion +
+                               MessageConstants.SizeSenderName + MessageConstants.SizeSenderIpAddress +
+                               MessageConstants.SizeMessageType + MessageConstants.SizeDateSent + MessageConstants.SizeDateSent +
                                oMessageContent.Length);
 
             //message size

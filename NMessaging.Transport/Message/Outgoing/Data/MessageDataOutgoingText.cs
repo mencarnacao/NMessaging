@@ -3,7 +3,7 @@ using NMessaging.Transport.Message.Data;
 
 namespace NMessaging.Transport.Message.Outgoing.Data
 {
-    public class MessageDataOutgoingText : AMessageDataOutgoing<string>, MessageDataText
+    public class MessageDataOutgoingText : AMessageDataOutgoing<string>, IMessageDataText
     {
         //////////////////////////////
         //        CONSTRUCTORS      //

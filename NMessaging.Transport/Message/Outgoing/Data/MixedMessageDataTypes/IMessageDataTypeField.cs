@@ -15,5 +15,9 @@ namespace NMessaging.Transport.Message.Outgoing.Data.MixedMessageDataTypes
         byte[] Content { get; }
 
         //////////////////////////////
+
+        string Name { get; }
+
+        //////////////////////////////
     }
 }

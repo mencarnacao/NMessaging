@@ -10,14 +10,16 @@ namespace NMessaging.Transport.Message.Outgoing.Data.MixedMessageDataTypes
 
         private readonly T _oType = default(T);
         private readonly object _oData = default(object);
+        private readonly string _strName = default(string);
 
 
         //////////////////////////////
         //        CONSTRUCTORS      //
         //////////////////////////////
 
-        protected AMessageDataTypeField(T pType, object pData)
+        protected AMessageDataTypeField(T pType, string pName, object pData)
         {
+            _strName = pName;
             _oType = pType;
             _oData = pData;
         }
@@ -37,6 +39,13 @@ namespace NMessaging.Transport.Message.Outgoing.Data.MixedMessageDataTypes
         public byte[] Content
         {
             get { return MessageDataTypeFieldFactory.Serialize(_oType, _oData); }
+        }
+
+        //////////////////////////////
+
+        public string Name
+        {
+            get { return _strName; }
         }
 
         //////////////////////////////
