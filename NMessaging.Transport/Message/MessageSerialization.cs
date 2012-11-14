@@ -55,6 +55,7 @@ namespace NMessaging.Transport.Message
 
         private static IEnumerable<byte> CalculateMessageCrypto(byte[] pMessageContent)
         {
+            //compute hash with the info in the header instead
             var cryptography = new SHA1CryptoServiceProvider();
 
             return cryptography.ComputeHash(pMessageContent);
@@ -64,28 +65,32 @@ namespace NMessaging.Transport.Message
 
         private static byte[] Serialize(IMessageDataOutgoing pMessage)
         {
+            var oHeader = new List<byte>();
+
+
+
             //if file is large than should save to disk and return a stream reader, the caller needs to have a setting to decide if, based
-            //the message can be saved to ram or if it need to be saved to disk
+            //the message can be saved to ram or if it needs to be saved to disk
             //validate and if not valid throw exception
 
-            var oMessageContent = MessageSerialization.Serialize(pMessage);
-            var oMessage =
-                new List<byte>(MessageConstants.SizeMessageCripto + MessageConstants.SizeMessageID + MessageConstants.SizeVersion +
-                               MessageConstants.SizeSenderName + MessageConstants.SizeSenderIpAddress +
-                               MessageConstants.SizeMessageType + MessageConstants.SizeDateSent + MessageConstants.SizeDateSent +
-                               oMessageContent.Length);
+            //var oMessageContent = MessageSerialization.Serialize(pMessage);
+            //var oMessage =
+            //    new List<byte>(MessageConstants.SizeMessageCripto + MessageConstants.SizeMessageID + MessageConstants.SizeVersion +
+            //                   MessageConstants.SizeSenderName + MessageConstants.SizeSenderIpAddress +
+            //                   MessageConstants.SizeMessageType + MessageConstants.SizeDateSent + MessageConstants.SizeDateSent +
+            //                   oMessageContent.Length);
 
-            //message size
-            oMessage.AddRange(pMessage.MessageID.ToByteArray());
-            oMessage.AddRange(Encoding.ASCII.GetBytes(pMessage.Version.ToString(CultureInfo.InvariantCulture)));
-            oMessage.AddRange(Encoding.ASCII.GetBytes(Settings.EndPointName));
-            oMessage.AddRange(Encoding.ASCII.GetBytes(Settings.EndPointIpAddress));
-            oMessage.AddRange(Encoding.ASCII.GetBytes(pMessage.MessageDataType.ToString()));
-            oMessage.AddRange(Encoding.ASCII.GetBytes(DateTime.UtcNow.ToString("yyyyMMddHHmmss")));
-            oMessage.AddRange(oMessageContent);
+            ////message size
+            //oMessage.AddRange(pMessage.MessageID.ToByteArray());
+            //oMessage.AddRange(Encoding.ASCII.GetBytes(pMessage.Version.ToString(CultureInfo.InvariantCulture)));
+            //oMessage.AddRange(Encoding.ASCII.GetBytes(Settings.EndPointName));
+            //oMessage.AddRange(Encoding.ASCII.GetBytes(Settings.EndPointIpAddress));
+            //oMessage.AddRange(Encoding.ASCII.GetBytes(pMessage.MessageDataType.ToString()));
+            //oMessage.AddRange(Encoding.ASCII.GetBytes(DateTime.UtcNow.ToString("yyyyMMddHHmmss")));
+            //oMessage.AddRange(oMessageContent);
 
-            oMessage.InsertRange(0, MessageSerialization.CalculateMessageCrypto(oMessage.ToArray()));
-            oMessage.InsertRange(0, Encoding.ASCII.GetBytes(oMessage.LongCount().ToString(CultureInfo.InvariantCulture)));
+            //oMessage.InsertRange(0, MessageSerialization.CalculateMessageCrypto(oMessage.ToArray()));
+            //oMessage.InsertRange(0, Encoding.ASCII.GetBytes(oMessage.LongCount().ToString(CultureInfo.InvariantCulture)));
 
             return oMessage.ToArray();
         }

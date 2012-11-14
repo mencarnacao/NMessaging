@@ -2,20 +2,22 @@
 {
     public static class MessageConstants
     {
-        //////////////////////////////
-        //          METHODS         //
-        //////////////////////////////
+        public static class Size
+        {
+            //////////////////////////////
+            //          MEMBERS         //
+            //////////////////////////////
 
-        public const int SizeMessageCripto = 36;
-        public const int SizeMessageID = 36;
-        public const int SizeVersion = 16;
-        public const int SizeSenderName = 36;
-        public const int SizeSenderIpAddress = 23;
-        public const int SizeMessageType = 10;
-        public const int SizeDateSent = 14;
+            public const int EnvelopeSize = 10;
+            public const int MessageID = 36;
+            public const int Version = 16;
+            public const int SenderName = 36;
+            public const int SenderIpAddress = 23;
+            public const int DateSent = 14;
+            public const int MessageDataType = 10;
+            public const int MessageContentType = 10;
 
-        public const 
-
-        //////////////////////////////
+            //////////////////////////////
+        }
     }
 }
