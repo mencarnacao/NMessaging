@@ -14,6 +14,8 @@
         public const int SizeMessageType = 10;
         public const int SizeDateSent = 14;
 
+        public const 
+
         //////////////////////////////
     }
 }
