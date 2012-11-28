@@ -48,7 +48,7 @@
     <Compile Include="Message\MessageDataTypeFieldFactory.cs" />
     <Compile Include="Message\MessageDeserialization.cs" />
     <Compile Include="Message\IMessage.cs" />
-    <Compile Include="Message\MessageSerialization.cs" />
+    <Compile Include="Message\Outgoing\MessageSerialization.cs" />
     <Compile Include="Message\MessageType.cs" />
     <Compile Include="Message\Outgoing\Data\MixedMessageDataTypes\IMessageDataTypeField.cs" />
     <Compile Include="Message\Outgoing\Data\MessageDataOutgoingMixed.cs" />
